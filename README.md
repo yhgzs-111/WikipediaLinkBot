@@ -48,6 +48,6 @@ python main.py
 4. 如需查看运行日志，请检查控制台输出或配置日志系统
 
 ## 鸣谢
-* Napcat
-* Ncatbot
-* User:FennelMa (Wikipedia)
+* [Napcat](https://napneko.github.io/)
+* [Ncatbot](https://docs.ncatbot.xyz/)
+* [User:FennelMa](https://zh.wikipedia.org/wiki/User:FennelMa) (Chinese Wikipedia)
