@@ -5,7 +5,7 @@
 * [NapCat.Shell](https://napneko.github.io/guide/boot/Shell#napcat-shell-win%E6%89%8B%E5%8A%A8%E5%90%AF%E5%8A%A8%E6%95%99%E7%A8%8B)
 * 支持Windows 7+系统，其它系统未测试
 * [Python](https://www.python.org) 3.7+
-* Ncatbot
+* [Ncatbot](https://docs.ncatbot.xyz/)
 ```python
 pip install Ncatbot
 ```
@@ -14,7 +14,8 @@ pip install Ncatbot
 1. **环境准备**
    - 确保已安装 Python 3.7+
    - 安装必要的依赖库：`pip install ncatbot`
-   - 确保NapCat.Shell已下载并解压到同文件夹中的"Napcat"文件夹并按照官方文档进行登陆操作
+   - 确保NapCat.Shell已下载并解压到同文件夹中的"Napcat"文件夹并按照[官方文档](https://napneko.github.io/)进行登陆操作
+   - 确保Ncatbot按照[官方文档](https://docs.ncatbot.xyz/)配置完成
 
 2. **配置机器人**
    - 修改代码中的 `config.set_bot_uin("")`，填入你的机器人 QQ 号
