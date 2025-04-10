@@ -36,6 +36,16 @@ pip install Ncatbot
    - 示例：`{{Infobox software}}`
    - 回复：`https://zh.wikipedia.org/wiki/Template:Infobox_software`
 
+## 新增功能
+1. **多语言支持**
+   可以通过 `[[en:Python]]` 或 `[[Python]]` 生成对应语言的 Wikipedia 链接，默认中文。
+
+2. **防崩溃**
+   通过输入验证和错误处理，确保程序不会因无效输入而崩溃。
+
+3. **实用性**
+   支持 Wikipedia 页面和 Template 页面链接生成，满足多种使用场景。
+
 ### 运行机器人
 ```python
 python main.py
