@@ -9,7 +9,7 @@ import html
 import urllib.parse
 
 # ========= 设置配置项 ==========
-config.set_bot_uin("your_bot_uin_here")  # 设置 bot QQ 号（已脱敏）
+config.set_bot_uin("your_bot_uin_here")  # 设置 bot QQ 号
 
 # ========= 创建 BotClient ==========
 bot = BotClient()
@@ -17,14 +17,14 @@ bot = BotClient()
 # ========= 获取日志实例 ==========
 _log = get_log()
 
-# 定义允许处理消息的群聊列表（群号已脱敏为示意）
+# 定义允许处理消息的群聊列表
 allowed_groups = [
     123456789,  # 群A
     987654321,  # 群B
     112233445   # 群C
 ]
 
-# --- 工具函数 ---
+# ========== 工具函数 ==========
 
 def parse_raw_message(raw: str) -> str:
     raw = html.unescape(raw)
