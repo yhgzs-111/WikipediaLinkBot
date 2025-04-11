@@ -24,9 +24,23 @@ allowed_groups = [
     112233445   # 群C
 ]
 
+# ========== 预编译正则表达式 ==========
+# 匹配形如 [[:lang:entry]] 格式，用于构造跨语言 Wikipedia 链接
+REGEX_LANG = re.compile(r'\[\[:([a-zA-Z0-9\-]+):(.*?)\]\]')
+# 匹配形如 [[keyword]] 格式
+REGEX_WIKI = re.compile(r'\[\[(.*?)\]\]')
+# 匹配形如 {{...}} 的模板格式
+REGEX_TEMPLATE = re.compile(r'\{\{(.*?)\}\}')
+# 匹配模板内部类似 ":lang:template" 的格式（使用 search 更灵活）
+REGEX_TEMPLATE_COLON = re.compile(r'\:\s*([a-zA-Z0-9\-]+):(.*)')
+
 # ========== 工具函数 ==========
 
 def parse_raw_message(raw: str) -> str:
+    """
+    处理原始消息文本，将转义字符转换为正常字符，
+    并解析 JSON 格式的消息（如果符合格式）。
+    """
     raw = html.unescape(raw)
     text_content = ""
     if raw.lstrip().startswith("[{"):
@@ -51,38 +65,60 @@ def parse_raw_message(raw: str) -> str:
         text_content = raw
     return text_content
 
-
 def build_wiki_url(text: str) -> str:
-    lang_match = re.search(r'\[\[\:\s*([a-zA-Z0-9\-]+)\s*:(.*?)\]\]', text)
+    """
+    根据输入文本构造对应的 Wikipedia URL。
+    支持以下几种格式：
+     1. [[:lang:entry]] -> 构造 https://{lang}.wikipedia.org/wiki/{entry} 链接
+     2. [[keyword]] -> 默认构造中文 Wikipedia 链接：https://zh.wikipedia.org/wiki/{keyword}
+     3. {{...}} 模板格式 -> 构造相应 Template 链接
+    """
+    # 尝试匹配 [[:lang:entry]] 格式
+    lang_match = REGEX_LANG.search(text)
     if lang_match:
         lang = lang_match.group(1).strip()
         entry = lang_match.group(2).strip()
+        # 将空格替换为下划线
+        entry = entry.replace(' ', '_')
         entry_enc = urllib.parse.quote(entry)
         return f"https://{lang}.wikipedia.org/wiki/{entry_enc}"
 
-    wiki_match = re.search(r'\[\[(.*?)\]\]', text)
+    # 尝试匹配 [[keyword]] 格式
+    wiki_match = REGEX_WIKI.search(text)
     if wiki_match:
         keyword = wiki_match.group(1).strip()
+        keyword = keyword.replace(' ', '_')
         keyword_enc = urllib.parse.quote(keyword)
         return f"https://zh.wikipedia.org/wiki/{keyword_enc}"
     
-    template_match = re.search(r'\{\{(.*?)\}\}', text)
+    # 尝试匹配模板格式 {{...}}
+    template_match = REGEX_TEMPLATE.search(text)
     if template_match:
         content = template_match.group(1).strip()
-        colon_match = re.match(r'\:\s*([a-zA-Z0-9\-]+)\s*:(.*)', content)
+        # 使用 search 而非 match，以便匹配字符串中的 :lang: 模式
+        colon_match = REGEX_TEMPLATE_COLON.search(content)
         if colon_match:
             lang = colon_match.group(1).strip()
             template_name = colon_match.group(2).strip()
+            template_name = template_name.replace(' ', '_')
             template_enc = urllib.parse.quote(template_name)
             return f"https://{lang}.wikipedia.org/wiki/Template:{template_enc}"
         else:
+            content = content.replace(' ', '_')
             template_enc = urllib.parse.quote(content)
             return f"https://zh.wikipedia.org/wiki/Template:{template_enc}"
 
+    # 如果没有匹配到任何格式，则记录日志并返回空字符串
+    _log.debug({
+        "event": "wiki_url_not_found",
+        "text": text
+    })
     return ""
 
-
 async def reply_and_log(msg: GroupMessage, reply_text: str):
+    """
+    将构造好的 URL 回复给群组，并记录回复日志。
+    """
     reply_message = MessageChain([Text(reply_text)])
     _log.debug({
         "event": "group_message_reply",
@@ -91,10 +127,13 @@ async def reply_and_log(msg: GroupMessage, reply_text: str):
     })
     await msg.reply(rtf=reply_message)
 
-
 # ========= 注册群聊消息回调函数 ==========
 @bot.group_event()
 async def on_group_message(msg: GroupMessage):
+    """
+    当收到群消息时，解析文本并检查是否需要回复 Wikipedia 的链接。
+    仅处理允许的群组消息。
+    """
     text_content = parse_raw_message(msg.raw_message)
     
     _log.debug({
