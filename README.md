@@ -56,3 +56,4 @@ python main.py
 * [Napcat](https://napneko.github.io/)
 * [Ncatbot](https://docs.ncatbot.xyz/)
 * [User:FennelMa](https://zh.wikipedia.org/wiki/User:FennelMa) (Chinese Wikipedia)
+* [User:Xiumuzidiao](https://zh.wikipedia.org/wiki/User:Xiumuzidiao) (Chinese Wikipedia)
