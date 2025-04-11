@@ -1,5 +1,3 @@
-# WikipediaLinkBot
-本项目用于在用户发送”[[Example]]""{{Example}}"时，QQ机器人会回复” https://zh.wikipedia.org/wiki/ “+ "[[]]里的内容"或Template:“{{}}里的内容”
 # 说明
 ## 准备
 * [NapCat.Shell](https://napneko.github.io/guide/boot/Shell#napcat-shell-win%E6%89%8B%E5%8A%A8%E5%90%AF%E5%8A%A8%E6%95%99%E7%A8%8B)
