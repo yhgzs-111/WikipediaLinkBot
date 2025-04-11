@@ -24,17 +24,24 @@ pip install Ncatbot
 ## 使用方法
 
 ### 基本功能
-机器人会自动识别两种特殊格式的消息并回复：
 
-1. **维基百科词条链接**
-   - 格式：`[[关键词]]`
-   - 示例：`[[Python]]`
-   - 回复：`https://zh.wikipedia.org/wiki/Python`
+机器人会自动识别以下三种格式的消息并生成对应的维基百科链接进行回复：
 
-2. **维基百科模板链接**
-   - 格式：`{{模板名}}`
-   - 示例：`{{Infobox software}}`
-   - 回复：`https://zh.wikipedia.org/wiki/Template:Infobox_software`
+#### 📘 支持的格式：
+
+1. `[[关键词]]`  
+   - 生成中文维基百科条目链接，如：  
+     `[[计算机]]` → `https://zh.wikipedia.org/wiki/计算机`
+
+2. `[[:语言:条目名字]]`  
+   - 支持指定语言的维基百科链接，如：  
+     `[[:en:Computer]]` → `https://en.wikipedia.org/wiki/Computer`
+
+3. `{{内容}}` （模板链接）  
+   - 若为 `{{:语言:模板名}}`，则使用对应语言的模板页面：  
+     `{{:en:Infobox}}` → `https://en.wikipedia.org/wiki/Template:Infobox`  
+   - 否则默认使用中文模板链接：  
+     `{{信息框}}` → `https://zh.wikipedia.org/wiki/Template:信息框`
 
 ### 运行机器人
 ```python
@@ -44,7 +51,7 @@ python main.py
 ## 注意事项
 1. 机器人只会响应 `allowed_groups` 列表中指定的群聊
 2. 确保机器人账号已加入这些群聊并有发送消息的权限
-3. 机器人会自动忽略不符合上述两种格式的消息
+3. 机器人会自动忽略不符合上述格式的消息
 4. 如需查看运行日志，请检查控制台输出或配置日志系统
 
 ## 鸣谢
