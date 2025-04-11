@@ -1,6 +1,8 @@
 # 代码作者：ChatGPT
 # 本代码尊崇能跑就行，不建议拿来使用，也欢迎有志之士提交PRs :)
-![image](https://github.com/user-attachments/assets/7f28d3db-abac-493d-88f5-fb61e2fc56c3)
+![image](https://github.com/user-attachments/assets/7a4b8c1e-d886-43df-af92-d047dd9d1ffb)
+
+~~至少目前还没爆炸😇~~
 # 说明
 ## 准备
 * [NapCat.Shell](https://napneko.github.io/guide/boot/Shell#napcat-shell-win%E6%89%8B%E5%8A%A8%E5%90%AF%E5%8A%A8%E6%95%99%E7%A8%8B)
