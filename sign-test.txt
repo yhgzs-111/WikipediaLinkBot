@@ -1,4 +1,0 @@
-"sign test" 
-"sign test" 
-"sign test" 
-"GPG 签名测试" 
