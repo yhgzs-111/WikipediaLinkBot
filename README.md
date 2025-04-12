@@ -62,4 +62,4 @@ python launch.py
 * [Ncatbot](https://docs.ncatbot.xyz/)
 * [User:FennelMa](https://zh.wikipedia.org/wiki/User:FennelMa) (Chinese Wikipedia)
 * [User:Xiumuzidiao](https://zh.wikipedia.org/wiki/User:Xiumuzidiao) (Chinese Wikipedia)
-* [武术有栖](https://github.com/HermaeusMoraMainTank)
+* [mononobealice](https://github.com/HermaeusMoraMainTank)
