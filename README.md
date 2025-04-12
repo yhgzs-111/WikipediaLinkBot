@@ -1,6 +1,6 @@
-# 代码作者：ChatGPT
-# 本代码尊崇能跑就行，不建议拿来使用，也欢迎有志之士提交PRs :)
-![image](https://github.com/user-attachments/assets/7a4b8c1e-d886-43df-af92-d047dd9d1ffb)
+~~# 代码作者：ChatGPT~~
+~~# 本代码尊崇能跑就行，不建议拿来使用~~。目前已修复，欢迎有志之士提交PRs :) 
+~~![image](https://github.com/user-attachments/assets/7a4b8c1e-d886-43df-af92-d047dd9d1ffb)~~
 
 ~~至少目前还没爆炸😇~~
 # 说明
@@ -22,7 +22,6 @@ pip install Ncatbot
 
 2. **配置机器人**
    - 修改代码中的 `config.set_bot_uin("")`，填入你的机器人 QQ 号
-   - 修改 `allowed_groups` 列表，添加允许机器人处理的群号
 
 ## 使用方法
 
@@ -48,17 +47,19 @@ pip install Ncatbot
 
 ### 运行机器人
 ```python
-python main.py
+python launch.py
 ```
 
 ## 注意事项
-1. 机器人只会响应 `allowed_groups` 列表中指定的群聊
+1. 机器人默认响应所有已加入的群聊
 2. 确保机器人账号已加入这些群聊并有发送消息的权限
 3. 机器人会自动忽略不符合上述格式的消息
 4. 如需查看运行日志，请检查控制台输出或配置日志系统
+5. 使用非官方机器人均有**冻结/封号**风险
 
 ## 鸣谢
 * [Napcat](https://napneko.github.io/)
 * [Ncatbot](https://docs.ncatbot.xyz/)
 * [User:FennelMa](https://zh.wikipedia.org/wiki/User:FennelMa) (Chinese Wikipedia)
 * [User:Xiumuzidiao](https://zh.wikipedia.org/wiki/User:Xiumuzidiao) (Chinese Wikipedia)
+* [武术有栖](https://github.com/HermaeusMoraMainTank)
