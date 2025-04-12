@@ -1,4 +1,4 @@
-~~# 代码作者：ChatGPT~~
+# ~~代码作者：ChatGPT~~
 ~~# 本代码尊崇能跑就行，不建议拿来使用~~。目前已修复，欢迎有志之士提交PRs :) 
 ~~![image](https://github.com/user-attachments/assets/7a4b8c1e-d886-43df-af92-d047dd9d1ffb)~~
 
