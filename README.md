@@ -21,7 +21,7 @@ pip install Ncatbot
    - 确保Ncatbot按照[官方文档](https://docs.ncatbot.xyz/)配置完成
 
 2. **配置机器人**
-   - 修改代码中的 `config.set_bot_uin("")`，填入你的机器人 QQ 号
+   - 修改launch.py中的 `bot.run(bt_uin="123456")`，改为你的机器人 QQ 号
 
 ## 使用方法
 
